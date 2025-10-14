@@ -3,7 +3,7 @@ package com.zazhi.fxpaint.tool;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 
-public class CircleTool implements DrawingTool {
+public class CircleTool extends AbstractDrawingTool {
     private double startX, startY;
 
     @Override
@@ -14,14 +14,15 @@ public class CircleTool implements DrawingTool {
 
     @Override
     public void onMouseDragged(MouseEvent e, GraphicsContext baseGc, GraphicsContext previewGc) {
-        clearPreview(previewGc);
+        clearCanvas(previewGc);
         drawCircle(e, previewGc);
     }
 
     @Override
     public void onMouseReleased(MouseEvent e, GraphicsContext baseGc, GraphicsContext previewGc) {
-        clearPreview(previewGc);
+        clearCanvas(previewGc);
         drawCircle(e, baseGc);
+        canvasStateManager.saveSnapshot();
     }
 
     private void drawCircle(MouseEvent e, GraphicsContext gc){

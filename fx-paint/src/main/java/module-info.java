@@ -8,4 +8,6 @@ module com.zazhi.fxpaint {
     opens com.zazhi.fxpaint to javafx.fxml;
     opens com.zazhi.fxpaint.controller to javafx.fxml;
     exports com.zazhi.fxpaint;
+    exports com.zazhi.fxpaint.core;
+    opens com.zazhi.fxpaint.core to javafx.fxml;
 }

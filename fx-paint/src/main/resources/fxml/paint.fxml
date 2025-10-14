@@ -26,6 +26,12 @@
                     <MenuItem mnemonicParsing="false" onAction="#saveCanvasAsImage" text="保存" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="编辑">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#undo" text="撤销" />
+                        <MenuItem mnemonicParsing="false" onAction="#redo" text="重做" />
+                     </items>
+                  </Menu>
               </menus>
             </MenuBar>
             <ToolBar prefHeight="40.0" prefWidth="200.0">

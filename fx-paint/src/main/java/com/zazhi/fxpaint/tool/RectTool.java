@@ -3,7 +3,7 @@ package com.zazhi.fxpaint.tool;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 
-public class RectTool implements DrawingTool {
+public class RectTool extends  AbstractDrawingTool {
     private double startX, startY;
 
     @Override
@@ -14,14 +14,15 @@ public class RectTool implements DrawingTool {
 
     @Override
     public void onMouseDragged(MouseEvent e, GraphicsContext baseGc, GraphicsContext previewGc) {
-        clearPreview(previewGc);
+        clearCanvas(previewGc);
         drawRect(e, previewGc);
     }
 
     @Override
     public void onMouseReleased(MouseEvent e, GraphicsContext baseGc, GraphicsContext previewGc) {
-        clearPreview(previewGc);
+        clearCanvas(previewGc);
         drawRect(e, baseGc);
+        canvasStateManager.saveSnapshot();
     }
 
     private void drawRect(MouseEvent e, GraphicsContext gc){
