@@ -1,5 +1,7 @@
 package com.zazhi.fxpaint;
 
+import com.zazhi.fxpaint.tool.DrawingTool;
+import com.zazhi.fxpaint.tool.PenTool;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,9 +14,11 @@ import javafx.stage.Stage;
  * @description: 绘图软件
  */
 public class FxPaintApplication extends Application {
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = (Parent) FXMLLoader.load(getClass().getResource("/fxml/paint.fxml"));
+
         stage.setTitle("FxPaint");
         stage.setScene(new Scene(root, 800, 600));
         stage.show();
