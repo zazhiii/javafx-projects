@@ -3,6 +3,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -13,9 +14,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zazhi.fxpaint.controller.PaintController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="717.0" stylesheets="@../css/paint.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zazhi.fxpaint.controller.PaintController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -51,21 +51,22 @@
       </VBox>
    </top>
    <center>
-      <StackPane BorderPane.alignment="CENTER">
+      <StackPane fx:id="canvasContainer" prefHeight="406.0" prefWidth="628.0" styleClass="canvas-stack-pane" BorderPane.alignment="CENTER">
          <children>
-            <Canvas fx:id="baseCanvas" height="371.0" width="610.0" />
-            <Canvas fx:id="previewCanvas" height="371.0" width="610.0" />
+            <Canvas fx:id="baseCanvas" height="437.0" width="623.5" />
+            <Canvas id="canvas-frame" fx:id="previewCanvas" height="437.0" styleClass="canvas-frame" width="623.5" />
          </children>
       </StackPane>
    </center>
    <left>
-      <Slider fx:id="widthSlider" orientation="VERTICAL" BorderPane.alignment="CENTER" />
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Slider fx:id="widthSlider" max="40.0" min="1.0" orientation="VERTICAL" prefHeight="402.0" prefWidth="40.0" value="1.0" />
+            <Label fx:id="widthSliderLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="40.0" text="1px" />
+         </children>
+      </VBox>
    </left>
    <right>
-      <Button alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="43.0" mnemonicParsing="false" onAction="#onClear" prefHeight="35.0" prefWidth="43.0" text="清空" textAlignment="CENTER" textOverrun="CLIP" BorderPane.alignment="TOP_CENTER">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" minWidth="43.0" mnemonicParsing="false" onAction="#onClear" prefHeight="35.0" prefWidth="43.0" text="清空" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" BorderPane.alignment="TOP_CENTER" />
    </right>
 </BorderPane>

@@ -10,6 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
@@ -36,6 +37,10 @@ public class PaintController {
     private ColorPicker colorPicker;
     @FXML
     private Slider widthSlider;
+    @FXML
+    private StackPane canvasContainer;
+    @FXML
+    private Label widthSliderLabel;
 
     private DrawingTool currentTool;
     private GraphicsContext baseGc;
@@ -46,7 +51,19 @@ public class PaintController {
     public void initialize() {
         baseGc = baseCanvas.getGraphicsContext2D();
         previewGc = previewCanvas.getGraphicsContext2D();
+
         canvasStateManager = new CanvasStateManager(baseCanvas);
+
+//        canvasContainer.widthProperty().addListener((obs, oldW, newW) -> {
+//            baseCanvas.setWidth(newW.doubleValue());
+//            previewCanvas.setWidth(newW.doubleValue());
+//        });
+//        canvasContainer.heightProperty().addListener((obs, oldH, newH) -> {
+//            baseCanvas.setHeight(newH.doubleValue());
+//            previewCanvas.setHeight(newH.doubleValue());
+//        });
+
+        widthSliderLabel.textProperty().bind(widthSlider.valueProperty().asString("%.0f").concat(" px"));
 
         ToggleGroup group = new ToggleGroup();
         penBtn.setToggleGroup(group);
